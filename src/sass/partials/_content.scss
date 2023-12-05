@@ -1,0 +1,56 @@
+
+*,
+*::before,
+*::after,
+body,
+html{
+    @extend %boxSizing;
+    scroll-behavior: smooth;
+}
+
+.wrapper {
+    @extend %wrapper;
+}
+
+body {
+    @include flexBody;
+    background: var(--system-violet, #6725A8);
+    
+
+}
+
+.container {
+    @include container();
+    // @media screen and (min-width: 530px) and (max-width:1250px){max-width:90%;}
+    // @media screen and (min-width: 420px) and (max-width:530px){max-width:95%;}
+    // @media screen and (min-width: 320px) and (max-width:480px){max-width:100%;}
+}
+
+.containerHeader {
+    @include containerHeader();
+}
+
+
+:active,
+:hover,
+:focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+svg, img, button {
+    cursor: pointer;
+}
+
+button:disabled {
+ cursor: default;
+ opacity: 0.5;
+ background-color: rgba(0, 0, 0, 0.20);
+}
+
+input[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+    height: auto;
+}
+fieldset {
+    padding: 0;
+}

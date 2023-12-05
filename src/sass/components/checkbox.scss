@@ -1,0 +1,128 @@
+input+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    color: var(--text-black, $color-black);
+    font-family: Segoe UI;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.choose-checkbox:not(:disabled):not(:checked)+label:hover::before {
+    border-color: $color-violet;
+}
+
+input[type="checkbox"]:checked,
+input[type="checkbox"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+input[type="checkbox"]:checked+label,
+input[type="checkbox"]:not(:checked)+label {
+    display: inline-block;
+    // position: relative;
+    padding-left: 22px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked+label:before,
+input[type="checkbox"]:not(:checked)+label:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 22px;
+    height: 22px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+input[type="checkbox"]:checked+label:before,
+input[type="checkbox"]:not(:checked)+label:before {
+    border-radius: 5px;
+}
+
+
+
+input[type="checkbox"]:checked+label:after,
+input[type="checkbox"]:not(:checked)+label:after {
+    content: "";
+    position: absolute;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:checked+label:after,
+input[type="checkbox"]:not(:checked)+label:after {
+    left: 5px;
+    top: 6px;
+    width: 13px;
+    height: 7px;
+    border-radius: 1px;
+    border-left: 3px solid #ffffff;
+    border-bottom: 3px solid #ffffff;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+
+}
+
+input[type="checkbox"]:not(:checked)+label:after {
+    opacity: 0;
+}
+
+input[type="checkbox"]:checked+label:after {
+    opacity: 1;
+}
+
+input[type="checkbox"]:checked+label::before {
+    border-color: #CB11AB;
+    background-color: #CB11AB;
+}
+
+/* стили для активного чекбокса (при нажатии на него) */
+input[type="checkbox"]:not(:disabled):active+label::before {
+    border-color: #CB11AB;
+}
+
+/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+input[type="checkbox"]:focus:not(:checked)+label::before {
+    border-color: #CB11AB;
+}
+
+.input[type="checkbox"]>input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+    height: auto;
+    display: none;
+}
+
+
+.agreement-checkbox[type=checkbox]:checked+label::before {
+    border-color: $color-white;
+    background-color: $color-white;
+}
+
+#agreement-to-pay:checked+label:after,
+#agreement-to-pay:not(:checked)+label:after {
+    border-left: 3px solid $color-black;
+    border-bottom: 3px solid $color-black;
+}
+
+.choose-to-pay-label,
+.agreement-to-pay-label {
+    margin-left: 8px;
+}

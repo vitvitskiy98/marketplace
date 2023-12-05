@@ -1,0 +1,23 @@
+
+.recipient-block-info-inputs-2 input:invalid,
+.recipient-block-info-inputs-1 input:invalid {
+    border-color: none;
+    border-bottom-color: $color-red !important;
+    color: $color-red;
+    box-shadow: none;
+}
+
+
+.recipient-block-info-inputs-2 input:focus:invalid,
+.recipient-block-info-inputs-1 input:focus:invalid {
+    border-color: none;
+    border-bottom-color: $color-red !important;
+    color: $color-red;
+    box-shadow: none;
+}
+
+
+#agreement-to-pay:checked+label, #agreement-to-pay:not(:checked)+label {
+    padding-left: 19px;
+    line-height: 17px;
+}
