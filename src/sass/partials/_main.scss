@@ -700,8 +700,9 @@
     display: none;
 }
 
-
-
+.active {
+    display: block !important;
+}
 //popups
 
 .pop_up {
@@ -713,9 +714,9 @@
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 2;
 
-    &.active {
-        display: block !important;
-    }
+    // & .active {
+    //     display: block !important;
+    // }
 
     & .pop_up_container {
         display: flex;
@@ -778,13 +779,30 @@
                 position: relative;
                 @include flex(row, flex-start, center);
 
-                svg {
-                    width: 30px;
-                }
 
                 & .payment-block-info-bottom {
                     @extend %marginPaddinZero;
                     padding-left: 8px;
+                    & .credit-card-mir-img{
+                        height: 9px;
+                        object-fit: cover;
+                        width: 30px;
+                    }
+                    & .credit-card-visa-img{
+                        height: 12px;
+                        object-fit: cover;
+                        width: 32px;
+                    }
+                     & .credit-card-mastercard-img{
+                         height: 14px;
+                         object-fit: cover;
+                         width: 24px;
+                     }
+                     & .credit-card-maestro-img  {
+                        height: 14px;
+                        object-fit: cover;
+                        width: 24px;
+                     }
                 }
             }
 
@@ -846,7 +864,13 @@
         }
     }
 }
-
+ .credit-card-icon-block {
+    background: $color-smoky;
+    border-radius: 4px;
+    height: 24px;
+    width: 32px;
+    @include flex(row,center,center);
+}
 .change-delivery:hover,
 .change-payment:hover {
     opacity: 0.7;
