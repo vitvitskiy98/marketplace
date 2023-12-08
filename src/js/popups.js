@@ -2,6 +2,8 @@
 
 import { paymentMethodOptions } from "./paymentOptions";
 import PaymentPopup from "./PaymentPopup";
+import {pickupOptions} from "./deliveryOptions";
+
 // first popup
 const changeDeliveryBtn = document.querySelector(".change-delivery");
 const firstChangeIcon = document.querySelector(".change-icon-block");
@@ -31,6 +33,27 @@ for(let adressBlock of document.querySelectorAll(".pop-up-adress-block")){
   })
 }
 
+let selectedAddress;
+console.log("Object.entries(pickupOptions)", Object.entries(pickupOptions))
+Object.entries(pickupOptions).forEach(([id, option]) => {
+  document.querySelector("#" + id).addEventListener("click", () => {
+    selectedAddress = option.address
+  })
+})
+document.querySelector(".delivery-choose-btn").addEventListener("click", () => {
+  document.querySelector(".delivery-total-adress").innerHTML = selectedAddress;
+  document.querySelector(".delivery-block-info-desc").innerHTML = selectedAddress;
+  btnClose.click()
+})
+
+
+
+
+
+
+
+
+
 
 
 // second popup
@@ -51,9 +74,9 @@ const btnCloseSecond = document.querySelectorAll(".pop_up_close")[1];
 // secondPopup.classList.add("active");
 // })
 
-// btnCloseSecond.addEventListener("click",function(event){
-//    secondPopup.classList.remove("active")
-// })
+btnCloseSecond.addEventListener("click",function(event){
+   secondPopup.classList.remove("active")
+})
 
 for(let adressBlock of document.querySelectorAll(".pop-up-adress-block")){
 adressBlock.addEventListener("click",function(event){
@@ -95,13 +118,15 @@ function handlePaymentMethodFormSubmit() {
 
 
 
-const btnEditPaymentIcon = document.querySelectorAll(".change-icon-block")[1];
-const btnEditPaymentText = document.querySelector(".change-payment");
+const editBtnPaymentIcon = document.querySelectorAll(".change-icon-block")[1];
+const editBtnPaymentText = document.querySelector(".change-payment");
 const paymentPopup = new PaymentPopup(".pop-up-payment", handlePaymentMethodFormSubmit);
 paymentPopup.setEventListeners();
-btnEditPaymentText.addEventListener("click", () => {
+editBtnPaymentText.addEventListener("click", () => {
   paymentPopup.open();
 });
-btnEditPaymentIcon.addEventListener("click", () => {
+editBtnPaymentIcon.addEventListener("click", () => {
   paymentPopup.open();
 });
+
+

@@ -87,6 +87,10 @@
         }
      }
 
+     .search-form-block {
+        width: 100%;
+     }
+
     .search-form-wrap {
         position: relative;
         // margin: 0 45px;
@@ -96,8 +100,7 @@
             @include flex(row, space-between, center);
 
             & .search-form-input {
-                // width: 930px;
-                width: 970px;
+                width: 100%;
                 height: 46px;
                 border-radius: 36px;
                 background: rgba(255, 255, 255, 0.20);

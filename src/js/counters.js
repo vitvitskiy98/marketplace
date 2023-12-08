@@ -1,12 +1,3 @@
-const totalNumbers = document.querySelectorAll(".total-number");
-
-
-totalNumbers.forEach(elem => elem.innerHTML.length > 5 ?
-            elem.style.cssText = "color: #000; text-align: right; font-family: Segoe UI; font-size: 16px;font-style: normal; font-weight: 700; line-height: 24px;"
-         : elem.style.cssText = "color: #000; text-align: right; font-family: Segoe UI; font-size: 20px; font-style: normal; font-weight: 700; line-height: 28px; letter-spacing: -0.2px;"
-          )
-
-
 
 // first counter
 const counterButtons = [document.querySelectorAll(".counter-btn")[0],document.querySelectorAll(".counter-btn")[1]];
@@ -16,11 +7,11 @@ counterButtons.forEach((counterBtn,index) => {
     counterBtn.addEventListener("click", () => {
       if(index === 0 && counter > 1) {
           counter--;
-      } else if (index === 1 && counter < 3) {
+      } else if (index === 1 && counter <=2) {
           counter++;
       }
         counterNumber.value = counter;
-        setDisabledBtn(counter,counterButtons, 3, 0, 1);
+        setDisabledBtn(counter,counterButtons, 2, 0, 1);
         updatePrice1(counter);
         updateDiscount1(counter);
     });
@@ -30,7 +21,7 @@ counterNumber.addEventListener("change", e => {
     if(counter > 3) {
         window.location.reload();
     }
-    setDisabledBtn(counter,counterButtons, 3, 0, 1);
+    setDisabledBtn(counter,counterButtons, 2, 0, 1);
     updatePrice1(counter);
     updateDiscount1(counter);
 })
@@ -41,6 +32,7 @@ counterNumber.addEventListener("change", e => {
 const counterButtonsSecond = [document.querySelectorAll(".counter-btn")[2],document.querySelectorAll(".counter-btn")[3]];
 const counterNumberSecond = document.querySelectorAll(".counter-quantity")[1];
 let counter2 = Number(counterNumberSecond.value);
+let restDelivery = counter2 /100 *8;
 console.log("counterButtonsSecond:", counterButtonsSecond)
 counterButtonsSecond.forEach((counterBtnScd,index) => {
     counterBtnScd.addEventListener("click", function() {
@@ -51,7 +43,7 @@ counterButtonsSecond.forEach((counterBtnScd,index) => {
       }
         counterNumberSecond.value = counter2;
         setDisabledBtn(counter2,counterButtonsSecond, 200, 0, 1);
-        updatePrice2(counter2);
+        updatePrice2(counter2,restDelivery);
         updateDiscount2(counter2);
     });
 });
@@ -61,7 +53,7 @@ counterNumberSecond.addEventListener("change", e => {
         window.location.reload();
     }
     setDisabledBtn(counter2,counterButtonsSecond, 200, 0, 1);
-    updatePrice2(counter2);
+    updatePrice2(counter2,restDelivery);
     updateDiscount2(counter2);
 })
 
@@ -97,9 +89,11 @@ counterNumberThird.addEventListener("change", e => {
 
 
 function setDisabledBtn(counter, counterBtns, numberLimit, numberFirst, numberSecond) {
-    if(counter ===1) {
+    if(counter === 1) {
         counterBtns[numberFirst].disabled = true;
+        counterBtns[numberSecond].disabled = false;
     } else if (counter === numberLimit) {
+        counterBtns[numberFirst].disabled = false;
         counterBtns[numberSecond].disabled = true;
     }
     else {
@@ -108,18 +102,62 @@ function setDisabledBtn(counter, counterBtns, numberLimit, numberFirst, numberSe
     }
 }
 
+const totalNumbers = document.querySelectorAll(".total-number");
+
+
+totalNumbers.forEach((elem) =>
+  elem.innerHTML.length > 5
+    ? (elem.style.cssText = "font-size: 16px; line-height: 24px;")
+    : (elem.style.cssText = "font-size: 20px;  line-height: 28px;")
+);
 
 // update price
+function calculatePrice1(selectedPrice1Counter) {
+    return 522 * selectedPrice1Counter
+}
 function updatePrice1(selectedPrice1Counter) {
-    return totalNumbers[0].innerHTML = 522 * selectedPrice1Counter
+    const price = calculatePrice1(selectedPrice1Counter)
+
+    totalNumbers[0].innerHTML = price
+    document.querySelector("#delivery-counter-1").innerHTML = selectedPrice1Counter
+
+    upateTotalPrice(price + calculatePrice2(counter2) + calculatePrice3(counter3))
+
+    return price
  }
- function updatePrice2(selectedPrice2Counter) {
-     return totalNumbers[1].innerHTML = Math.ceil(10500.235 * selectedPrice2Counter)
+
+ function calculatePrice2(selectedPrice2Counter) {
+    return Math.ceil(10500.235 * selectedPrice2Counter)
+ }
+ function updatePrice2(selectedPrice2Counter, quantity) {
+    const price = calculatePrice2(selectedPrice2Counter)
+    totalNumbers[1].innerHTML = price
+    document.querySelector("#delivery-counter-2").innerHTML = Number(selectedPrice2Counter - quantity);
+    document.querySelector("#delivery-counter-4").innerHTML = Number(quantity);
+
+    upateTotalPrice(price + calculatePrice1(counter) + calculatePrice3(counter3))
+
+    return price
  }
  
- function updatePrice3(selectedPrice3Counter) {
-     return totalNumbers[2].innerHTML = 247 * selectedPrice3Counter
+ function calculatePrice3(selectedPrice3Counter) {
+    return 247 * selectedPrice3Counter
  }
+ function updatePrice3(selectedPrice3Counter) {
+    const price = calculatePrice3(selectedPrice3Counter)
+    totalNumbers[2].innerHTML = price
+    document.querySelector("#delivery-counter-3").innerHTML = selectedPrice3Counter
+
+    upateTotalPrice(price + calculatePrice2(counter2) + calculatePrice1(counter))
+
+    return price
+ }
+
+ function upateTotalPrice(price) {
+    document.querySelectorAll(".total-price")[3].innerHTML = price + " сом"
+ }
+
+ updatePrice1(counter)
  
  
  // update discount
@@ -138,3 +176,5 @@ function updatePrice1(selectedPrice1Counter) {
      return allDiscounts[2].innerHTML = 475 * selectedPrice3Counter + "  сом";
  }
  
+
+ document.querySelectorAll(".cart-counter").forEach(counter => counter.innerHTML.length >= 2 ? document.querySelectorAll(".cart-counter-block").forEach(counterBlock => counterBlock.style.width = "20px") :"" )

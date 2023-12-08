@@ -8,8 +8,18 @@
     & .two-main-parts {
         @include flex(row, flex-start, flex-start);
         column-gap: 32px;
+        width: 100%;
     }
+        & .main-left,
+        & .main-right {
+            max-width: 100%;
+            align-items: flex-start;
+            @include detailedFlex(column, flex-start, flex-start, nowrap);
+        }
 
+}
+.cart {
+    max-width:100%;
 }
 
 // Cart Heading
@@ -30,6 +40,7 @@
     @include flex(row, space-between, center);
     margin-bottom: 16px;
     position: relative;
+    width: 100%;
 }
 
 // Choose All Form
@@ -59,6 +70,7 @@
 .chosen-products-2 {
     width: 765px;
     margin-top: 7px;
+    width: 100%;
 
     & .chosen-product-left .chosen-product-description-block {
         width: 309px;
@@ -94,6 +106,7 @@
 .chosen-product {
     position: relative;
     @include flex(row, space-between, flex-start);
+    width: 100%;
     // margin-top: 11px;
 
     // Chosen Product Image
@@ -310,6 +323,7 @@
     background: var(--background-white, $color-white);
     padding: 16px 0px 24px 0px;
     margin-bottom: 16px;
+    width: 100%;
 
     // Delivery Method Block
     & .delivery-method-block,
@@ -387,6 +401,7 @@
 
     .return-delivery-paragraph>span {
         color: var(--system-green, $color-green);
+        border-bottom: 1px dotted $color-green;
     }
 
     & .dilevery-block-info-desc-first {
@@ -402,7 +417,42 @@
         column-gap: 6px;
 
     }
+     
+        & .delivery-block-info-third, & .delivery-block-info-fourth {
 
+            & .delivery-block-counter {
+                position: relative;
+            }
+    
+            & .cart-counter-block {
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: nowrap;
+                align-content: center;
+                position: absolute;
+                bottom: 17px;
+                left: 22px;
+                width: 16px;
+                height: 16px;
+                border-radius: 16px;
+                background: var(--system-orange, #F55123);
+                top: -10px;
+                left: 32px;
+
+                & .cart-counter {
+                    color: var(--system-white, #fff);
+                    text-align: center;
+                    font-family: Segoe UI;
+                    font-size: 10px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 18px;
+                }
+            }
+    }
     & .delivery-block-info-third,
     &.delivery-block-info-fourth {
 
@@ -609,19 +659,27 @@
 }
 
 .total-return-delivery-block {
+    position: relative;
     @include flex(row, center, center);
     column-gap: 8px;
     border-radius: 8px;
     background: var(--background-smoky, $color-smoky);
     padding: 8px 8px 12px 8px;
     margin-bottom: 25px;
-
+     
+    & .sber-tooltip {
+        height: 56px;
+        width: 288px;
+        top: 38px;
+        left: -113px;
+    }
     & .return-deliveryparagraph {
         color: var(--text-black, $color-black);
         @extend %textSmall;
 
         &>span {
             color: var(--system-green, $color-green);
+            border-bottom: 1px dotted $color-green;
         }
     }
 }
@@ -713,11 +771,10 @@
     top: 0;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 2;
-
-    // & .active {
-    //     display: block !important;
-    // }
-
+      
+    &.active {
+        display: block !important;
+    }
     & .pop_up_container {
         display: flex;
         @extend %widthHeight100;
@@ -884,8 +941,33 @@
 }
 
 // toollip
+ .discount-tooltip-1 {
+    height: 64px;
+    right: -2px;
+    top: 50px;
+    width: 239px !important;
+    filter: drop-shadow(0 0 1px rgba(0,0,0,.3)) drop-shadow(0 2px 10px rgba(0,0,0,.15));
+    & .discount-tooltip-blocks {
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
 
-.wb-tooltip, .mg-tooltip {
+        & .discount-tooltip-block {
+            @include flex(row, space-between,center);
+            column-gap: 8px;
+         }
+         & .discount-tooltip-paragraph {
+            color: var(--light-system-gray, $color-gray);
+            @extend %textSmall;
+         }
+         & .discount-tooltip-price {
+            color: var(--light-system-text, $color-black);
+            @extend %textSmall;
+         }
+    }
+
+ }
+.wb-tooltip, .mg-tooltip , .discount-tooltip-1, .sber-tooltip {
     width: 280px;
     height: fit-content;
     padding: 11px 16px 13px;
@@ -897,23 +979,35 @@
     position: absolute;
     z-index: 2;
     display: none;
+
  
-    & .wb-tooltip-heading,  & .mg-tooltip-heading {
+    & .wb-tooltip-heading,  & .mg-tooltip-heading , & .discount-tooltip-1-heading{
         @extend %textSmallBold;
     }
 
-    & .wb-tooltip-paragraph, & .mg-tooltip-paragraph {
+    & .wb-tooltip-paragraph, & .mg-tooltip-paragraph, & .discount-tooltip-1-paragraph, & .sber-tooltip-paragraph {
         color: $color-black;
         @extend %textSmall;
     }
 
-    & .wb-tooltip-heading, & .mg-tooltip-heading,
-    & .wb-tooltip-paragraph, & .mg-tooltip-paragraph {
+    & .wb-tooltip-heading, & .mg-tooltip-heading, & .discount-tooltip-1-heading
+    & .wb-tooltip-paragraph, & .mg-tooltip-paragraph, & .discount-tooltip-1-paragraph{
         @extend %marginPaddinZero;
         text-align: left;
     }
 }
+ .sber-section-block {
+    position: relative;
+ }
+.sber-tooltip {
+    height: 56px;
+    width: 288px;
+    top: 18px;
+    left: 210px;
+}
 
-
+.divider-line {
+    width: 100%;
+}
 //
 //This code has been updated with proper commenting. Comments have been added to provide a clear and concise explanation of each section of the code.
