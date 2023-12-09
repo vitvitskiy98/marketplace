@@ -9,17 +9,46 @@
         @include flex(row, flex-start, flex-start);
         column-gap: 32px;
         width: 100%;
-    }
-        & .main-left,
-        & .main-right {
-            max-width: 100%;
-            align-items: flex-start;
-            @include detailedFlex(column, flex-start, flex-start, nowrap);
+
+        @media screen and (max-width:1050px) {
+            flex-direction: column;
         }
+    }
+
+    & .main-left {
+        @media screen and (max-width:1050px) {
+            width: 100%;
+        }
+    }
+
+    & .main-right {
+        @media screen and (max-width:1050px) {
+            margin-bottom: 50px;
+             width: 100% !important;
+        }
+    }
+
+    & .main-left,
+    & .main-right {
+        max-width: 100%;
+        align-items: flex-start;
+        @include detailedFlex(column, flex-start, flex-start, nowrap);
+    }
+
+    & .main-left {
+
+        & .main-left-top,
+        & .main-left-bottom {
+
+            @include detailedFlex(column, flex-start, flex-start, nowrap);
+            align-content: flex-start;
+            width: 100%;
+        }
+    }
 
 }
 .cart {
-    max-width:100%;
+    width:100%;
 }
 
 // Cart Heading
@@ -33,16 +62,31 @@
     letter-spacing: -0.28px;
     margin-top: 35px;
     margin-bottom: 25px;
+    text-align: left;
 }
 
 // Cart Block Main
 .cart-block-main {
     @include flex(row, space-between, center);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     position: relative;
     width: 100%;
 }
-
+ .arrow-icon {
+    background-image: url(../assets/icons/arrow.svg);
+    @extend %imgStyle;
+    background-size: 20px 20px;
+    border: none;
+    height: 20px;
+    width: 20px;
+}
+.divider-line {
+    background-image: url(../assets/icons/line.svg);
+    @extend %imgStyle;
+    width: 100%;
+    height: 1px;
+    margin-bottom: 10px;
+}
 // Choose All Form
 .choose-all-form>label {
     margin-left: 11px;
@@ -67,8 +111,9 @@
     top: 41px;
 }
 
+
 .chosen-products-2 {
-    width: 765px;
+    // max-width: 765px;
     margin-top: 7px;
     width: 100%;
 
@@ -89,6 +134,12 @@
     & .chosen-product .counter-block-icons {
         margin: 0;
     }
+    & .counter-block {
+        margin-right: 125px;
+        @media (min-width: 1000px) and (max-width:1200px){
+          margin-right: 0;
+        }
+    }
 }
 
 .chosen-products,
@@ -107,7 +158,9 @@
     position: relative;
     @include flex(row, space-between, flex-start);
     width: 100%;
-    // margin-top: 11px;
+    @media (min-width: 1000px) and (max-width:1200px){
+        // column-gap: 100px;
+    }
 
     // Chosen Product Image
     & .chosen-img {
@@ -526,7 +579,7 @@
 
 .recipient-block-inputs {
     margin-bottom: 24px;
-    width: 750px;
+    max-width: 748px;
 }
 
 .INN-error {
@@ -562,16 +615,21 @@
 }
 
 .total-section {
-    width: 429px;
+    // width: 429px;
+    max-width: 429px;
     @include flex(column, flex-start, center);
     padding: 16px 24px 24px 24px;
     border-radius: 16px;
     background: var(--background-white, $color-white);
     box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.30), 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
     margin-top: 22px;
+    @media screen and (max-width:1050px){
+        width: 100% ;
+    }
 
     & .total-block-gap {
         @include flex(column, flex-start, center);
+        max-width: 100%;
         // gap: 24px;
     }
 
@@ -608,6 +666,7 @@
 .delivery-total-block-bottom,
 .payment-block,
 .choose-to-pay-block {
+    @include flex(column);
     width: 100%;
 }
 
@@ -666,6 +725,7 @@
     background: var(--background-smoky, $color-smoky);
     padding: 8px 8px 12px 8px;
     margin-bottom: 25px;
+    width: 100%;
      
     & .sber-tooltip {
         height: 56px;
@@ -704,6 +764,7 @@
     border-radius: 8px;
     background: var(--background-smoky, $color-smoky);
     padding: 8px 8px 12px 8px;
+    width: 100%;
 
     & .choose-to-pay-form {
         position: relative;
@@ -734,7 +795,7 @@
 }
 
 .agreement-block {
-    width: 390px;
+    width: 100%;
     position: relative;
 
     & .agreement-to-pay-label {
@@ -1006,8 +1067,6 @@
     left: 210px;
 }
 
-.divider-line {
-    width: 100%;
-}
+
 //
 //This code has been updated with proper commenting. Comments have been added to provide a clear and concise explanation of each section of the code.

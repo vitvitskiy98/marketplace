@@ -1,20 +1,30 @@
 .header-main {
-    // border: 1px solid #000;
     background: var(--system-violet, $color-violet);
-    height: 88px;
-    // box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    // height: 88px;
 
     & .header-container {
         @include flex(row, space-between, center);
         padding: 16px 0;
         column-gap: 32px;
+        @media screen and (max-width: 1050px) { 
+            align-items: flex-start;
+        }
 
         & .header-left {
             @include flex();
             height: 48px;
+            @media screen and (max-width: 1050px) { 
+                height: 28px;
+            }
 
             & .header-logo {
                 cursor: pointer;
+
+                & .logo {
+                    @media screen and (max-width: 1050px) { 
+                        width: 100%;
+                    }
+                }
 
 
                 &:hover {
@@ -25,10 +35,32 @@
             & .header-catalogue {
                 margin-right: 15px;
                 cursor: pointer;
+                background-image: url(../assets/icons/hamburger-menu-desktop.svg);
+                background-color: transparent;
+                background-position: 50%;
+                background-repeat: no-repeat;
+                background-size: 28px 24px;
+                border: 1px solid hsla(0, 0%, 100%, .45);
+                border-radius: 8px;
+                width: 48px;
+                height: 48px;
+
+                @media screen and (max-width: 1050px) {
+                        background-image: url(../assets/icons/hamburger-menu.svg);
+                        background-size: 28px 26px;
+                        border: none;
+                        border-radius: 0;
+                        height: 28px;
+                        width: 28px;
+                    }
+
+                &:hover {
+                    filter: invert(20%) sepia(117%) saturate(623%) hue-rotate(295deg) brightness(109%) contrast(128%);
+                }
             }
 
             & .logo {
-                color: var(--system-white, #fff);
+                color: var(--system-white, $color-white);
                 font-family: "Segoe UI";
                 font-size: 28px;
                 font-style: normal;
@@ -47,21 +79,61 @@
         }
     }
 
-    & .profile-block , & .cart-block , & .search-icon{
+    & .search-icon , & .search-icon-mobile{
+        background-image: url(../assets/icons/Search.svg);
+        @extend %imgStyle;
+        background-size: 24px 24px;
+        border: none;
+        height: 24px;
+        width: 24px;
+    }
+    & .search-icon-mobile {
+        display: none;
+
+        @media screen and (max-width:1050px) {
+             display: block;
+        }
+    }
+    & .profile-block,
+    & .cart-block {
+        @include detailedFlex(column, center, center, nowrap);
+        align-content: center;
+
+        & .profile-block-img {
+            background-image: url(../assets/icons/Profile-big.svg);
+            @extend %imgStyle;
+            height: 28px;
+            width: 28px;
+            background-size: 28px 28px;
+        }
+    }
+
+    & .cart-icon-img {
+        background-image: url(../assets/icons/Cart.svg);
+        @extend %imgStyle;
+        height: 28px;
+        width: 36px;
+        background-size: 28px 28px;
+    }
+
+    & .profile-block,
+    & .cart-block,
+    & .search-icon {
         cursor: pointer;
-     }
-      & .cart-block {
-          
+    }
+
+    & .cart-block {
+
 
         & .cart-icon-block {
             position: relative;
-                @include detailedFlex(column, center, center, wrap);
-                align-content: center;
-                right: 3px;
-                bottom: 1px;
+            @include detailedFlex(column, center, center, wrap);
+            align-content: center;
+            right: 3px;
+            bottom: 1px;
 
             & .cart-counter-block {
-                @include detailedFlex(column,center,center,nowrap);
+                @include detailedFlex(column, center, center, nowrap);
                 align-content: center;
                 position: absolute;
                 bottom: 17px;
@@ -85,11 +157,15 @@
 
 
         }
-     }
+    }
 
-     .search-form-block {
+    .search-form-block {
         width: 100%;
-     }
+
+        @media screen and (max-width:1050px) {
+            display: none;
+        }
+    }
 
     .search-form-wrap {
         position: relative;
@@ -136,21 +212,27 @@
 
     & .header-menu-block {
         @include flex(row, space-between, flex-end);
+        @media screen and (max-width: 1050px) {
+            display: none;
+        }
+
         // column-gap: 50px;
         // margin-left: 20px;
         & .profile-block,
         & .cart-block {
             @extend %flexCenter;
-           row-gap: 6px;
+            row-gap: 6px;
         }
+
         & .cart-block {
             align-items: center;
             margin-right: 7px;
             margin-left: 41px;
-        } 
+        }
+
         & .profile-block {
-           row-gap: 5px;
-        } 
+            row-gap: 5px;
+        }
 
         & .profile-paragraph,
         & .cart-paragraph {

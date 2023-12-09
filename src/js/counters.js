@@ -177,4 +177,4 @@ function updatePrice1(selectedPrice1Counter) {
  }
  
 
- document.querySelectorAll(".cart-counter").forEach(counter => counter.innerHTML.length >= 2 ? document.querySelectorAll(".cart-counter-block").forEach(counterBlock => counterBlock.style.width = "20px") :"" )
+ document.querySelectorAll(".cart-counter").forEach(counter => counter.innerHTML.length >= 2 ? document.querySelectorAll(".cart-counter-block").forEach(counterBlock => counterBlock.style.width = "20px") :"17px" )
