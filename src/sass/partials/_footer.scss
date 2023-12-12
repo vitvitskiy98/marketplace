@@ -2,6 +2,7 @@
     @include flex(row, space-between, center);
     background: var(--system-violet, #6725A8);
     gap: 40px;
+
     & .footer-content-paragraph {
         color: rgba(255, 255, 255, 0.70);
         text-align: center;
@@ -13,3 +14,111 @@
         padding: 24px;
     }
 }
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 56px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    padding: 14px;
+    box-shadow: 0 -0.5px 0 0 rgba(0, 0, 0, 0.30);
+    backdrop-filter: blur(3px);
+    @media screen and (max-width: 1000px) { display: block;}
+
+    & .mobile-nav-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        & .mobile-nav-home-link {
+            width: 28px;
+            height: 28px;
+            background-image: url("../assets/icons/home-icon.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 28px 28px;
+
+        }
+
+        & .mobile-nav-catalog-link {
+            width: 28px;
+            height: 28px;
+            background-image: url("../assets/icons/catalog.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 28px 28px;
+        }
+
+        & .mobile-nav-cart-link {
+            position: relative;
+            background-image: url(../assets/icons/Cart-mobile.svg);
+            @extend %imgStyle;
+            height: 28px;
+            width: 36px;
+            background-size: 28px 28px;
+
+            & .cart-block {
+
+
+                & .cart-icon-block {
+                    position: relative;
+                    @include detailedFlex(column, center, center, wrap);
+                    align-content: center;
+                    right: 3px;
+                    bottom: 1px;
+
+                }
+            }
+
+            & .cart-counter-block {
+                @include detailedFlex(column, center, center, nowrap);
+                align-content: center;
+                position: absolute;
+                bottom: 17px;
+                left: 22px;
+                width: 16px;
+                height: 16px;
+                border-radius: 16px;
+                background: var(--system-orange, $color-orange);
+
+                & .cart-counter {
+                    color: var(--system-white, $color-white);
+                    text-align: center;
+                    font-family: Segoe UI;
+                    font-size: 10px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 18px;
+
+                }
+            }
+        }
+
+        & .mobile-nav-favorites-link {
+            background-image: url(../assets/icons/like-icon.svg);
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: 28px 28px;
+            height: 28px;
+            width: 28px;
+        }
+
+        & .mobile-nav-profile-link {
+            background-image: url(../assets/icons/profile-gray.svg);
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: 28px 28px;
+            height: 28px;
+            width: 28px;
+        }
+
+    }
+}
+

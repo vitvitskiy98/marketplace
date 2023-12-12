@@ -1,4 +1,4 @@
-const firstTooltip = document.querySelector(".tooltip-info")
+const firstTooltip = document.querySelector(".chosen-product-origin-icon")
 firstTooltip.addEventListener("mouseover", e => {
     const target = e.target;
     document.querySelector(".wb-tooltip").style.display ="flex";
@@ -9,8 +9,7 @@ firstTooltip.addEventListener("mouseout", e => {
 })
 
 
-
-const secondTooltip = document.querySelectorAll(".tooltip-info")[1]
+const secondTooltip = document.querySelectorAll(".chosen-product-origin-icon")[1]
 secondTooltip.addEventListener("mouseover", e => {
     const target = e.target;
     document.querySelector(".mg-tooltip").style.display ="flex";
@@ -22,7 +21,7 @@ secondTooltip.addEventListener("mouseout", e => {
 
 
 
-const thirdTooltip = document.querySelectorAll(".tooltip-info")[2];
+const thirdTooltip = document.querySelectorAll(".chosen-product-origin-icon")[2];
 thirdTooltip.addEventListener("mouseover", e => {
     document.querySelectorAll(".wb-tooltip")[1].style.display ="flex";
 })

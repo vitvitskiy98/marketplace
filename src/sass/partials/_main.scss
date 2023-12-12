@@ -4,25 +4,27 @@
     min-height: calc(100vh - 80px);
     border-radius: 24px;
     background: $color-light-gray;
+    width: 100%;
 
     & .two-main-parts {
-        @include flex(row, flex-start, flex-start);
+        @include flex(row, space-between, flex-start);
         column-gap: 32px;
         width: 100%;
 
-        @media screen and (max-width:1050px) {
+        @media screen and (max-width:1000px) {
             flex-direction: column;
         }
     }
 
     & .main-left {
-        @media screen and (max-width:1050px) {
+        width: 100%;
+        @media screen and (max-width:1000px) {
             width: 100%;
         }
     }
 
     & .main-right {
-        @media screen and (max-width:1050px) {
+        @media screen and (max-width:1000px) {
             margin-bottom: 50px;
              width: 100% !important;
         }
@@ -30,7 +32,6 @@
 
     & .main-left,
     & .main-right {
-        max-width: 100%;
         align-items: flex-start;
         @include detailedFlex(column, flex-start, flex-start, nowrap);
     }
@@ -43,6 +44,12 @@
             @include detailedFlex(column, flex-start, flex-start, nowrap);
             align-content: flex-start;
             width: 100%;
+        }
+        & .main-left-right {
+            width: 100%;
+            @media screen and (max-width: 1000px) {
+                width: 100%;
+            }
         }
     }
 
@@ -119,6 +126,8 @@
 
     & .chosen-product-left .chosen-product-description-block {
         width: 309px;
+        // width: 100%;
+
     }
 
     & .chosen-product .chosen-product-description-block {
@@ -129,6 +138,7 @@
 
     & .chosen-img {
         margin-left: 0px;
+
     }
 
     & .chosen-product .counter-block-icons {
@@ -158,15 +168,67 @@
     position: relative;
     @include flex(row, space-between, flex-start);
     width: 100%;
+    column-gap: 17px;
     @media (min-width: 1000px) and (max-width:1200px){
         // column-gap: 100px;
+    }
+    @media screen and (max-width:768px) {
+        @include flex(column, flex-start, flex-start);
+        row-gap: 12px;
+    }
+    & .total-block-mobile {
+        @include detailedFlex(row, flex-start, center,nowrap);
+        display: none;
+        column-gap: 5px;
+        @media screen  and (max-width: 768px){
+            display: flex;
+        }
+
+        & .total-price-mobile {
+            display: flex;
+        }
+
+        // Total Number
+        & .total-number-mobile {
+            color: var(--text-black, $color-black);
+            text-align: right;
+            @extend %textBigBold;
+            font-size: 16px;
+            line-height: 26px;
+            }
+
+        // Total Currency
+        & .total-currency-mobile pre {
+            color: var(--text-black, $color-black);
+            text-align: right;
+            @extend %textMiddleBold;
+        }
+
+        // Total Old Price
+        & .total-old-price-mobile {
+            color: var(--system-gray, $color-gray);
+            text-decoration: line-through;
+            @extend %textSmall;
+            text-align: right;
+        }
     }
 
     // Chosen Product Image
     & .chosen-img {
         margin-left: 12px;
+
+        @media screen and (max-width:768px) {
+            margin-left: 0;
+        }
+    }
+   & .choose-checkbox-label {
+    @media screen  and (max-width:768px){
+        position: absolute;
+        top: -30px;
+        left: 0;
     }
 
+   }
     // Chosen Product Characteristics
     & .chosen-product-characteristics {
         @include flex(row, flex-start, center);
@@ -182,7 +244,8 @@
 
     // Chosen Product Description Block
     & .chosen-product-description-block {
-        width: 100%;
+        // width: 100%;
+        width: 250px;
         margin-left: 16px;
 
         // Chosen Product Description
@@ -190,6 +253,18 @@
             color: var(--text-black, $color-black);
             @extend %textMiddle;
             margin-bottom: 8px;
+
+            @media screen  and (max-width: 768px){
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
+                font-size: 14px;
+                line-height: 20px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: pre-wrap;
+                width: 100%;
+            }
         }
     }
 
@@ -199,6 +274,16 @@
         // Chosen Product Origin Block
         & .chosen-product-origin-block {
             @include flex();
+
+            @media screen  and (max-width:768px){
+                display: none;
+            }     
+        }
+        & .chosen-product-origin-icon {
+            background-image: url(../assets/icons/info-icon.svg);
+            @extend %imgStyle;
+            width: 20px;
+            height: 20px;
         }
 
         // Is Stocked At
@@ -227,6 +312,10 @@
         border-radius: 8px;
         background: $color-white;
         @include flex(row, center, center);
+        @media screen and (max-width:768px) {
+            width: 80px;
+            height: 32px;
+        }
 
         button {
             width: 24px;
@@ -249,7 +338,12 @@
 
     // Total Block
     & .total-block {
-        // margin-left: 55px;
+        @include detailedFlex(column, flex-start, flex-end,nowrap);
+        width: 110px;
+
+        @media screen and (max-width:768px) {
+               display: none;
+            }
 
         // Total Price
         & .total-price {
@@ -284,40 +378,90 @@
     }
 
     // Quantity Left
+    & .quantity-left-block {
+        @include flex(column);
+        row-gap: 8px;
+
+        @media screen and (max-width:768px){
+            @include detailedFlex(row, space-between, stretch,nowrap);
+            column-gap: 5px;
+        }
+
+    }
     & .quantity-left {
-        margin-top: 8px;
         color: $color-red;
         @extend %textSmall;
+
+        @media screen  and (max-width:768px){
+          
+        }
     }
 
     // Counter Block Icons
     & .counter-block-icons {
         @include flex(row, flex-end, center);
         column-gap: 17px;
-        margin-top: 8px;
+        @media screen  and (max-width:768px){
+          
+        }
+        & .counter-btn-like {
+            background-image: url(../assets/icons/like-icon-black.svg);
+            background-size: 20px 20px;
+            @extend %imgStyle;
+            height: 20px;
+            width: 20px;
+        }
+        & .counter-remove-btn {
+            background-image: url(../assets/icons/delete-icon.svg);
+            background-size: 20px 20px;
+            @extend %imgStyle;
+            height: 20px;
+            width: 20px;
+        }
     }
 }
-
+.counter-remove-btn-modal {
+    background-image: url(../assets/icons/delete-icon-gray.svg);
+    background-size: 20px 20px;
+    @extend %imgStyle;
+    height: 20px;
+    width: 20px;
+}
 // Chosen Product Left
 .chosen-product-left {
     @include flex(row, flex-start, flex-start);
 
-    // Chosen Product Description Block
-    & .chosen-product-description-block {
-        width: 275px;
+    @media screen  and (max-width:768px){
+        position: relative;
     }
 
-    & .chosen-product-description-block:nth-child(3) {
-        width: 250px;
+    & .chosen-img-img {
+         @media screen  and (max-width:768px){
+             width: 80px;
+             height: 106px;
+         }
     }
 }
 
 // Chosen Product Right
 .chosen-product-right {
     @include flex(row, space-between, stretch);
-    max-width: 225px;
-    width: 100%;
-    // Total Block
+    // max-width: 225px;
+    // width: 100%;
+    column-gap: 16px;
+    @media screen and (max-width:768px){
+        width: 100%;
+        justify-items: flex-start;
+    }
+     
+     & .counter-block {
+        @include detailedFlex(column,flex-end, stretch, nowrap);
+        row-gap: 8px;
+        @media screen and (max-width:768px) {
+            @include detailedFlex(row,space-between, center, nowrap);
+            width: 100%;
+        }
+     }
 
     // Total Block Total Number
     & .total-block .total-number {
@@ -345,7 +489,7 @@
     // Out of Stock Quantity Block
     & .out-of-stock-quantity-block {
         @include flex(row, space-between, center);
-        margin-bottom: 5px;
+        margin-bottom: 17px;
     }
 
     // Out of Stock Heading
@@ -434,6 +578,14 @@
     & .dilevery-block-info-right {
         @include flex(column, flex-start, flex-start);
         row-gap: 16px;
+
+        & .raiting-icon {
+            background-image: url(../assets/icons/raiting.svg);
+            @extend %imgStyle;
+            height: 12px;
+            width: 12px;
+            background-size: 12px 12px;
+        }
     }
 
     // Delivery Block Info Description
@@ -527,6 +679,15 @@
     @extend %textSmall;
 }
 
+  
+ .sber-icon-block {
+    background-image: url(../assets/icons/sber-icon.svg);
+    @extend %imgStyle;
+    height: 22px;
+    width: 22px;
+ }
+
+
 // Delivery Block Info Bottom
 .delivery-block-info-bottom,
 .payment-block-info-bottom,
@@ -615,26 +776,36 @@
 }
 
 .total-section {
-    // width: 429px;
-    max-width: 429px;
+
+    // max-width: 429px;
     @include flex(column, flex-start, center);
     padding: 16px 24px 24px 24px;
     border-radius: 16px;
     background: var(--background-white, $color-white);
     box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.30), 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
     margin-top: 22px;
-    @media screen and (max-width:1050px){
-        width: 100% ;
+    @media screen  and (min-width:1400px){
+        width: 429px;
+    }
+    @media screen and (max-width:1024px){
+        width: 100%;
+    }
+    @media screen and (min-width:1001px) and (max-width:1024px){
+        width: 303px;
     }
 
     & .total-block-gap {
         @include flex(column, flex-start, center);
-        max-width: 100%;
+        width: 100%;
         // gap: 24px;
+        @media screen and (max-width: 1000px){
+            @include flex(column, flex-start, stretch);
+        }
     }
 
     & .total-delivery-info-block {
         margin-bottom: 11px;
+        width: 100%;
     }
 
     & .total-items-info-block {
@@ -703,7 +874,7 @@
 }
 
 .delivery-total-adress {
-    margin-top: 5px;
+    margin-top: 4px;
 }
 
 .delivery-total-adress,
@@ -726,6 +897,9 @@
     padding: 8px 8px 12px 8px;
     margin-bottom: 25px;
     width: 100%;
+    @media screen and (max-width:1000px) {
+        @include flex(row, flex-start, center);
+    }
      
     & .sber-tooltip {
         height: 56px;
@@ -750,7 +924,7 @@
 
 .payment-block-info-bottom-2 {
     padding: 0;
-    margin-top: 8px;
+    margin-top: 2px;
     column-gap: 10px;
 
     & .card-info-paragraph-2 {
@@ -970,6 +1144,14 @@
             right: 15px;
             font-size: 21px;
             cursor: pointer;
+
+            & .pop-up-close-icon {
+                background-image: url(../assets/icons/close-icon.svg);
+                @extend %imgStyle;
+                height: 24px;
+                width: 24px;
+                background-size: 24px 24px;
+            }
         }
     }
 
@@ -995,6 +1177,16 @@
     transition: opacity .3s ease-out;
 }
 
+.change-icon-block {
+
+    & .change-icon-img {
+        background-image: url(../assets/icons//change-icon.svg);
+        @extend %imgStyle;
+        height: 20px;
+        width: 20px;
+        background-size: 20px 20px;
+    }
+}
 .change-icon-block :hover {
     fill: $color-magenta;
     stroke: $color-magenta;

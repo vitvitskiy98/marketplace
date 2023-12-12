@@ -1,6 +1,9 @@
 .header-main {
     background: var(--system-violet, $color-violet);
-    // height: 88px;
+    height: 88px;
+    @media screen and (max-width:868px){
+        height: 100%;
+    }
 
     & .header-container {
         @include flex(row, space-between, center);
@@ -21,7 +24,7 @@
                 cursor: pointer;
 
                 & .logo {
-                    @media screen and (max-width: 1050px) { 
+                    @media screen and (max-width: 868px) { 
                         width: 100%;
                     }
                 }
@@ -44,8 +47,8 @@
                 border-radius: 8px;
                 width: 48px;
                 height: 48px;
-
-                @media screen and (max-width: 1050px) {
+                
+                @media screen and (max-width: 868px) {
                         background-image: url(../assets/icons/hamburger-menu.svg);
                         background-size: 28px 26px;
                         border: none;
@@ -90,7 +93,7 @@
     & .search-icon-mobile {
         display: none;
 
-        @media screen and (max-width:1050px) {
+        @media screen and (max-width:868px) {
              display: block;
         }
     }
@@ -162,7 +165,7 @@
     .search-form-block {
         width: 100%;
 
-        @media screen and (max-width:1050px) {
+        @media screen and (max-width:868px) {
             display: none;
         }
     }
@@ -212,7 +215,7 @@
 
     & .header-menu-block {
         @include flex(row, space-between, flex-end);
-        @media screen and (max-width: 1050px) {
+        @media screen and (max-width: 868px) {
             display: none;
         }
 

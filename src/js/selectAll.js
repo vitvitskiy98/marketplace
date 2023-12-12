@@ -21,7 +21,9 @@ function saveSelectedItems(items) {
 
 
 const selectAll =  document.getElementById("choose");
+const cartCounters = document.querySelectorAll(".cart-counter");
 const itemsQuantity = document.querySelector(".cart-counter");
+const lastCounter = cartCounters[cartCounters.length - 1];
 
 (function() {
   for (const id of selectedIds) {
@@ -32,7 +34,8 @@ const itemsQuantity = document.querySelector(".cart-counter");
   if (selectedIds.length == checkboxIds.length) {
     selectAll.checked = true
   }
-  itemsQuantity.innerHTML = String(selectedIds.length)
+  itemsQuantity.innerHTML = String(selectedIds.length);
+  lastCounter.innerHTML = String(selectedIds.length);
 })()
 
  function selectAllItems() {
@@ -48,6 +51,7 @@ const itemsQuantity = document.querySelector(".cart-counter");
     
     saveSelectedItems(selectedIds)
     itemsQuantity.innerHTML = isChecked ? "3" : "0"
+    lastCounter.innerHTML = isChecked ? "3" : "0"
 }
 selectAll.addEventListener('click', selectAllItems);
 checkboxes.forEach(checkbox => {
@@ -62,7 +66,8 @@ checkboxes.forEach(checkbox => {
     }
 
     saveSelectedItems(selectedIds)
-    itemsQuantity.innerHTML = String(selectedIds.length)
+    itemsQuantity.innerHTML = String(selectedIds.length);
+    lastCounter.innerHTML = String(selectedIds.length);
     selectAll.checked = selectedIds.length === checkboxIds.length
   })
 })

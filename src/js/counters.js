@@ -103,7 +103,7 @@ function setDisabledBtn(counter, counterBtns, numberLimit, numberFirst, numberSe
 }
 
 const totalNumbers = document.querySelectorAll(".total-number");
-
+const totalNumbersMobile = document.querySelectorAll(".total-number-mobile");
 
 totalNumbers.forEach((elem) =>
   elem.innerHTML.length > 5
@@ -118,7 +118,8 @@ function calculatePrice1(selectedPrice1Counter) {
 function updatePrice1(selectedPrice1Counter) {
     const price = calculatePrice1(selectedPrice1Counter)
 
-    totalNumbers[0].innerHTML = price
+    totalNumbers[0].innerHTML = price;
+    totalNumbersMobile[0].innerHTML = price;
     document.querySelector("#delivery-counter-1").innerHTML = selectedPrice1Counter
 
     upateTotalPrice(price + calculatePrice2(counter2) + calculatePrice3(counter3))
@@ -131,7 +132,8 @@ function updatePrice1(selectedPrice1Counter) {
  }
  function updatePrice2(selectedPrice2Counter, quantity) {
     const price = calculatePrice2(selectedPrice2Counter)
-    totalNumbers[1].innerHTML = price
+    totalNumbers[1].innerHTML = price;
+    totalNumbersMobile[1].innerHTML = price;
     document.querySelector("#delivery-counter-2").innerHTML = Number(selectedPrice2Counter - quantity);
     document.querySelector("#delivery-counter-4").innerHTML = Number(quantity);
 
@@ -145,7 +147,8 @@ function updatePrice1(selectedPrice1Counter) {
  }
  function updatePrice3(selectedPrice3Counter) {
     const price = calculatePrice3(selectedPrice3Counter)
-    totalNumbers[2].innerHTML = price
+    totalNumbers[2].innerHTML = price;
+    totalNumbersMobile[2].innerHTML = price;
     document.querySelector("#delivery-counter-3").innerHTML = selectedPrice3Counter
 
     upateTotalPrice(price + calculatePrice2(counter2) + calculatePrice1(counter))
@@ -163,18 +166,21 @@ function updatePrice1(selectedPrice1Counter) {
  // update discount
  
  const allDiscounts = document.querySelectorAll(".total-old-price");
+ const allDiscountsMobile = document.querySelectorAll(".total-old-price-mobile");
  
  function updateDiscount1(selectedPrice1Counter) {
-     return allDiscounts[0].innerHTML = 1051 * selectedPrice1Counter + "  сом";
+      allDiscounts[0].innerHTML = 1051 * selectedPrice1Counter + "  сом";
+      allDiscountsMobile[0].innerHTML = 1051 * selectedPrice1Counter + "  сом";
  }
  
  function updateDiscount2(selectedPrice2Counter) {
-     return allDiscounts[1].innerHTML = Math.ceil(11500.235 * selectedPrice2Counter) + "  сом";
+      allDiscounts[1].innerHTML = Math.ceil(11500.235 * selectedPrice2Counter) + "  сом";
+      allDiscountsMobile[1].innerHTML = Math.ceil(11500.235 * selectedPrice2Counter) + "  сом";
  }
  
  function updateDiscount3(selectedPrice3Counter) {
-     return allDiscounts[2].innerHTML = 475 * selectedPrice3Counter + "  сом";
+      allDiscounts[2].innerHTML = 475 * selectedPrice3Counter + "  сом";
+      allDiscountsMobile[2].innerHTML = 475 * selectedPrice3Counter + "  сом";
  }
  
 
- document.querySelectorAll(".cart-counter").forEach(counter => counter.innerHTML.length >= 2 ? document.querySelectorAll(".cart-counter-block").forEach(counterBlock => counterBlock.style.width = "20px") :"17px" )

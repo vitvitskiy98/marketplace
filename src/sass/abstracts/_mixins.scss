@@ -51,7 +51,7 @@
 }
 
 
-@mixin header-container ($max-width: 1440px) {
+@mixin header-container ($width: 1440px) {
     padding:  16px 17px 16px 20px;
     margin: 0 auto;
     max-width: $max-width;

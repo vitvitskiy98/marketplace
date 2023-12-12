@@ -47,15 +47,6 @@ document.querySelector(".delivery-choose-btn").addEventListener("click", () => {
 })
 
 
-
-
-
-
-
-
-
-
-
 // second popup
 
 const changePaymentBtn = document.querySelector(".change-payment");
@@ -63,16 +54,6 @@ const secondChangeIcon = document.querySelectorAll(".change-icon-block")[1];
 const secondPopup = document.querySelectorAll(".pop_up")[1];
 const btnCloseSecond = document.querySelectorAll(".pop_up_close")[1];
 
-
-
-// changePaymentBtn.addEventListener('click', function(event){
-//   event.preventDefault();
-//   secondPopup.classList.add("active");
-// })
-// secondChangeIcon.addEventListener('click', function(event){
-// event.preventDefault();
-// secondPopup.classList.add("active");
-// })
 
 btnCloseSecond.addEventListener("click",function(event){
    secondPopup.classList.remove("active")
@@ -107,16 +88,6 @@ function handlePaymentMethodFormSubmit() {
       });
     }
   }
-
-//  const paymentMethodForm = document.getElementById("payment-form");
-//  function handler (e) {
-//     e.preventDefault();
-//     handlePaymentMethodFormSubmit();
-//     secondPopup.classList.remove("active");
-//  }
-//  paymentMethodForm.addEventListener("submit", handler)
-
-
 
 const editBtnPaymentIcon = document.querySelectorAll(".change-icon-block")[1];
 const editBtnPaymentText = document.querySelector(".change-payment");
