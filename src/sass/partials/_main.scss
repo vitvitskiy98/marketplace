@@ -5,6 +5,12 @@
     border-radius: 24px;
     background: $color-light-gray;
     width: 100%;
+    & .container {
+            @media screen and (max-width:768px) {
+                @include mobileContainer(768px);
+            }
+        }
+
 
     & .two-main-parts {
         @include flex(row, space-between, flex-start);
@@ -70,6 +76,9 @@
     margin-top: 35px;
     margin-bottom: 25px;
     text-align: left;
+    @media screen and (max-width:768px) {
+        @include textBigBoldMobile();
+    }
 }
 
 // Cart Block Main
@@ -126,8 +135,10 @@
 
     & .chosen-product-left .chosen-product-description-block {
         width: 309px;
-        // width: 100%;
-
+        @media screen  and (max-width:768px){
+          width: 100%;
+        }
+  
     }
 
     & .chosen-product .chosen-product-description-block {
@@ -247,6 +258,9 @@
         // width: 100%;
         width: 250px;
         margin-left: 16px;
+        @media screen  and (max-width:768px){
+            width: 100%;
+        }
 
         // Chosen Product Description
         & .chosen-product-description {
@@ -410,6 +424,9 @@
             @extend %imgStyle;
             height: 20px;
             width: 20px;
+            &:hover {
+                background-image: url(../assets/icons/like-icon-pink.svg);
+            }
         }
         & .counter-remove-btn {
             background-image: url(../assets/icons/delete-icon.svg);
@@ -417,6 +434,9 @@
             @extend %imgStyle;
             height: 20px;
             width: 20px;
+            &:hover {
+                background-image: url(../assets/icons/delete-icon-red.svg);
+            }
         }
     }
 }
@@ -502,6 +522,17 @@
     & .chosen-product-description-out {
         color: var(--system-gray, $color-gray);
         @extend %textMiddle;
+        @media screen and (max-width:768px) {
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+            font-size: 14px;
+            line-height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: pre-wrap;
+            width: 100%;
+        }
     }
 
     // Chosen Product Color Out, Chosen Product Size Out
@@ -511,6 +542,7 @@
         @extend %textSmall;
     }
 }
+
 
 // Delivery Section
 .delivery-section,
@@ -530,11 +562,19 @@
         column-gap: 10px;
         padding: 0 24px;
 
+        @media screen and (max-width:768px) {
+            padding: 0 16px;;
+        }
+
         // Delivery Method Heading
         & .delivery-method-heading,
         & .payment-method-heading,
         & .recipient-method-heading {
             @extend %sectionTextBold;
+
+            @media screen and (max-width:768px) {
+                @include textBigBoldMobile();
+            }
         }
 
         // Change Delivery
@@ -550,34 +590,36 @@
     }
 
     // Dilevery Info Block
-    & .dilevery-info-block {
-        @include flex(row, flex-start, flex-start);
+    & .delivery-info-block {
+        @include flex(column, flex-start, flex-start);
         column-gap: 32px;
+        row-gap: 16px;
         padding: 16px 24px 24px 24px;
 
+        @media screen  and (max-width:768px){
+            padding: 16px 16px 24px 16px;
+        }
+
+        & .delivery-block-row {
+            width: 100%;
+            @media screen  and (max-width:768px){
+                flex-direction: column;
+            }
+        }
+
         // Dilevery Block Info Heading
-        & .dilevery-block-info-heading {
+        & .delivery-block-info-heading {
             color: var(--text-black, $color-black);
             @extend %textSemiBold;
+            min-width: 153px;
         }
 
-        & .dilevery-block-info-heading:first-child {
-            margin-bottom: 35px;
-        }
-
-        & .dilevery-block-info-heading:nth-child(2) {
-            margin-bottom: 16px;
-        }
-
-        & .dilevery-block-info-heading:nth-child(3) {
-            margin-bottom: 48px;
-        }
     }
-
-    // Dilevery Block Info Headings, Dilevery Block Info Right
-    & .dilevery-block-info-right {
-        @include flex(column, flex-start, flex-start);
+     
+    & .delivery-block-row {
+        @include flex(row, flex-start, flex-start);
         row-gap: 16px;
+        column-gap: 32px;
 
         & .raiting-icon {
             background-image: url(../assets/icons/raiting.svg);
@@ -609,7 +651,7 @@
         border-bottom: 1px dotted $color-green;
     }
 
-    & .dilevery-block-info-desc-first {
+    & .delivery-block-info-desc-first {
         @include detailedFlex(column, flex-start, flex-start, nowrap);
         align-content: flex-start;
         row-gap: 2px;
@@ -683,11 +725,15 @@
  .sber-icon-block {
     background-image: url(../assets/icons/sber-icon.svg);
     @extend %imgStyle;
-    height: 22px;
-    width: 22px;
+    min-height: 22px;
+    min-width: 22px;
  }
 
-
+ .delivery-block-info-bottom {
+    @media screen and (max-width:768px) {
+       flex-wrap: nowrap !important;
+    }
+ }
 // Delivery Block Info Bottom
 .delivery-block-info-bottom,
 .payment-block-info-bottom,
@@ -698,6 +744,12 @@
     column-gap: 8px;
     @include flex(row, flex-start, center);
     padding: 0 24px;
+
+    @media screen and (max-width:768px) {
+        @include detailedFlex(row,flex-start,center, wrap);
+        row-gap: 30px;
+        padding: 0 16px;;
+    }
 }
 
 .warning {
@@ -793,6 +845,9 @@
     @media screen and (min-width:1001px) and (max-width:1024px){
         width: 303px;
     }
+    @media screen and (max-width:768px) {
+        padding: 16px 16px 24px 16px;
+    }
 
     & .total-block-gap {
         @include flex(column, flex-start, center);
@@ -818,6 +873,10 @@
         @include detailedFlex(row, flex-start, center, wrap);
     }
 
+    & .total-items-quantity, & .total-items-discount {
+        @include flex(row,space-between,center);
+        column-gap: 5px;
+    }
     & .total-items-quantity,
     & .total-items-price,
     & .total-items-discount-paragraph,
@@ -864,6 +923,10 @@
     .total-price {
         @extend %sectionTextBold;
         letter-spacing: -1px;
+
+        @media screen and (max-width:768px) {
+            @include textBigBoldMobile();
+        }
     }
 }
 
@@ -932,6 +995,9 @@
         text-align: right;
         @extend %textSmall;
     }
+    @media screen and (max-width:768px) {
+        justify-content: flex-start;
+    }
 }
 
 .choose-to-pay-block {
@@ -979,15 +1045,6 @@
     }
 }
 
-.hover-violet-color:hover {
-    stroke: $color-magenta;
-    fill: $color-magenta;
-}
-
-.red-color:hover {
-    stroke: $color-red-delete;
-    fill: $color-red-delete;
-}
 
 .display-none {
     display: none;

@@ -161,26 +161,72 @@ function updatePrice1(selectedPrice1Counter) {
  }
 
  updatePrice1(counter)
- 
+
+
  
  // update discount
  
  const allDiscounts = document.querySelectorAll(".total-old-price");
  const allDiscountsMobile = document.querySelectorAll(".total-old-price-mobile");
+
  
+ function calculateDiscount1(selectedPrice1Counter) {
+    return 1051 * selectedPrice1Counter;
+ }
  function updateDiscount1(selectedPrice1Counter) {
-      allDiscounts[0].innerHTML = 1051 * selectedPrice1Counter + "  сом";
-      allDiscountsMobile[0].innerHTML = 1051 * selectedPrice1Counter + "  сом";
+      const discount = calculateDiscount1(selectedPrice1Counter)
+      allDiscounts[0].innerHTML = discount;
+      allDiscountsMobile[0].innerHTML = discount;
+      updateTotalDiscount(discount + calculateDiscount2(counter2) + calculateDiscount3(counter3))
  }
  
+ function calculateDiscount2(selectedPrice2Counter) {
+    return Math.ceil(11500.235 * selectedPrice2Counter);
+ }
  function updateDiscount2(selectedPrice2Counter) {
-      allDiscounts[1].innerHTML = Math.ceil(11500.235 * selectedPrice2Counter) + "  сом";
-      allDiscountsMobile[1].innerHTML = Math.ceil(11500.235 * selectedPrice2Counter) + "  сом";
+    const discount = calculateDiscount2(selectedPrice2Counter);
+      allDiscounts[1].innerHTML = discount;
+      allDiscountsMobile[1].innerHTML = discount;
+      updateTotalDiscount(discount + calculateDiscount1(counter) + calculateDiscount3(counter3))
  }
  
+ function calculateDiscount3(selectedPrice3Counter) {
+    return 475 * selectedPrice3Counter;
+ }
  function updateDiscount3(selectedPrice3Counter) {
-      allDiscounts[2].innerHTML = 475 * selectedPrice3Counter + "  сом";
-      allDiscountsMobile[2].innerHTML = 475 * selectedPrice3Counter + "  сом";
+      const discount = calculateDiscount3(selectedPrice3Counter);
+      allDiscounts[2].innerHTML = discount;
+      allDiscountsMobile[2].innerHTML = discount;
+      updateTotalDiscount(discount + calculateDiscount1(counter) + calculateDiscount2(counter2))
  }
- 
+
+ function updateTotalDiscount(discount) {
+    document.querySelector(".items-price-total-discount").innerHTML = discount;
+ }
+
+
+ // calculate item price
+   
+
+
+
+//  function showTotalItemNumber(selectedPrice1Counter,selectedPrice2Counter, selectedPrice3Counter) {
+//     const totaItemNum = selectedPrice1Counter + selectedPrice2Counter + selectedPrice3Counter;
+//     updateTotalItemNumber(totaItemNum);
+//  }
+
+//  function updateTotalItemNumber(totaItemNum) {
+//     const totaItemNumber = document.querySelector(".items-quantity-number");
+//     totaItemNumber.innerHTML = totaItemNum;
+//  }
+
+
+ for(let i = 0; i < document.querySelectorAll(".cart-counter").length; i++) {
+    if(document.querySelectorAll(".cart-counter")[i].innerHTML.length >= 2) {
+        document.querySelectorAll(".cart-counter-block")[i].style.width = "20px";
+    }
+    else if (document.querySelectorAll(".cart-counter")[i].innerHTML.length < 2) {
+        document.querySelectorAll(".cart-counter-block")[i].style.width = "16px";
+    }
+}
 
