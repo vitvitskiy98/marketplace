@@ -276,7 +276,7 @@
                           <button class="counter-btn">+</button>
                         </div>
                         <div class="quantity-left-block">
-                        <p class="quantity-left">Осталось 2 шт.</p>
+                        <!-- <p class="quantity-left">Осталось 2 шт.</p> -->
                         <div class="counter-block-icons">
                           <div class="counter-btn-like"></div>
                           <div class="counter-remove-btn delete"></div>
@@ -584,13 +584,13 @@
                   <div class="recipient-block-info-inputs-1">
                     <div class="input-block">
                       <label for="name">Имя</label>
-                      <input type="text" placeholder="Имя" name="name"
+                      <input type="text" placeholder="Имя" name="name" class="name-input"
                         title="использовать только пробелы и русские буквы" pattern="^[А-Яа-яЁё\s]+$" />
                       <p class="name-error">Укажите имя</p>
                     </div>
                     <div class="input-block">
                       <label for="surname">Фамилия</label>
-                      <input type="text" placeholder="Фамилия" name="surname"
+                      <input type="text" placeholder="Фамилия" name="surname" class="surname-input"
                         title="использовать только пробелы и русские буквы" pattern="^[А-Яа-яЁё\s]+$" />
                       <p class="surname-error">Укажите фамилию</p>
                     </div>
@@ -598,20 +598,20 @@
                   <div class="recipient-block-info-inputs-2">
                     <div class="input-block">
                       <label for="email">Почта</label>
-                      <input type="email" placeholder="Почта" name="email"
+                      <input type="email" placeholder="Почта" name="email" class="email-input"
                         pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$" />
                       <p class="email-error">Укажите почту</p>
                     </div>
                     <div class="input-block">
                       <label for="phone"> Телефон </label>
-                      <input type="tel" title="Разрешено от 11 до 13 цифр" maxlength="20" name="phone"
+                      <input type="tel" title="Разрешено от 11 до 13 цифр" maxlength="20" name="phone" class="phone-input"
                         placeholder="Телефон" value="+7 988 123-45-67"
                         pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$">
                       <p class="phone-error">Укажите телефон</p>
                     </div>
                     <div class="input-block">
                       <label for="inn"> ИНН </label>
-                      <input type="text" title="разрешены только цифрфы" name="inn" placeholder="ИНН" size="14"
+                      <input type="text" title="разрешены только цифрфы" name="inn" placeholder="ИНН" size="14" class="inn-input"
                         pattern="\d{14}" />
                       <p class="INN-error">Для таможенного оформления</p>
                     </div>
@@ -625,17 +625,17 @@
             <section class="total-section">
               <div class="total-price-block">
                 <h2 class="total-heading">Итого</h2>
-                <h2 class="total-price">2 101 063 сом</h2>
+                <h2 class="total-price-heading"> <span class="total-price">2101063</span>сом</h2>
               </div>
               <div class="total-block-gap">
                 <div class="total-items-info-block">
                   <div class="total-items-info">
                     <p class="total-items-quantity"> <span class="items-quantity-number">203</span>товара</p>
-                    <p class="total-items-price"><span class="items-price-total-number">2 302 048</span> сом</p>
+                    <p class="total-items-price"><span class="items-price-total-number">2302048</span> сом</p>
                   </div>
                   <div class="total-items-discount-info">
                     <p class="total-items-discount-paragraph">Скидка</p>
-                    <p class="total-items-discount"> <span class="items-price-total-discount">−200 985</span>сом</p>
+                    <p class="total-items-discount">− <span class="items-price-total-discount">200985</span>сом</p>
                   </div>
                   <div class="total-items-delivery-info">
                     <p class="total-items-delivery-paragraph">Доставка</p>

@@ -157,7 +157,7 @@ function updatePrice1(selectedPrice1Counter) {
  }
 
  function upateTotalPrice(price) {
-    document.querySelectorAll(".total-price")[3].innerHTML = price + " сом"
+    document.querySelectorAll(".total-price")[3].innerHTML = price 
  }
 
  updatePrice1(counter)
@@ -166,8 +166,8 @@ function updatePrice1(selectedPrice1Counter) {
  
  // update discount
  
- const allDiscounts = document.querySelectorAll(".total-old-price");
- const allDiscountsMobile = document.querySelectorAll(".total-old-price-mobile");
+ const allOldPrices = document.querySelectorAll(".total-old-price");
+ const allOldPricesMobile = document.querySelectorAll(".total-old-price-mobile");
 
  
  function calculateDiscount1(selectedPrice1Counter) {
@@ -175,9 +175,9 @@ function updatePrice1(selectedPrice1Counter) {
  }
  function updateDiscount1(selectedPrice1Counter) {
       const discount = calculateDiscount1(selectedPrice1Counter)
-      allDiscounts[0].innerHTML = discount;
-      allDiscountsMobile[0].innerHTML = discount;
-      updateTotalDiscount(discount + calculateDiscount2(counter2) + calculateDiscount3(counter3))
+      allOldPrices[0].innerHTML = discount + "  сом";
+      allOldPricesMobile[0].innerHTML = discount + "  сом";;
+      updateTotal(discount + calculateDiscount2(counter2) + calculateDiscount3(counter3))
  }
  
  function calculateDiscount2(selectedPrice2Counter) {
@@ -185,9 +185,9 @@ function updatePrice1(selectedPrice1Counter) {
  }
  function updateDiscount2(selectedPrice2Counter) {
     const discount = calculateDiscount2(selectedPrice2Counter);
-      allDiscounts[1].innerHTML = discount;
-      allDiscountsMobile[1].innerHTML = discount;
-      updateTotalDiscount(discount + calculateDiscount1(counter) + calculateDiscount3(counter3))
+      allOldPrices[1].innerHTML = discount + "  сом";
+      allOldPricesMobile[1].innerHTML = discount + "  сом";
+      updateTotal(discount + calculateDiscount1(counter) + calculateDiscount3(counter3))
  }
  
  function calculateDiscount3(selectedPrice3Counter) {
@@ -195,19 +195,32 @@ function updatePrice1(selectedPrice1Counter) {
  }
  function updateDiscount3(selectedPrice3Counter) {
       const discount = calculateDiscount3(selectedPrice3Counter);
-      allDiscounts[2].innerHTML = discount;
-      allDiscountsMobile[2].innerHTML = discount;
-      updateTotalDiscount(discount + calculateDiscount1(counter) + calculateDiscount2(counter2))
+      allOldPrices[2].innerHTML = discount + "  сом";;
+      allOldPricesMobile[2].innerHTML = discount + "  сом";;
+      updateTotal(discount + calculateDiscount1(counter) + calculateDiscount2(counter2))
  }
 
- function updateTotalDiscount(discount) {
-    document.querySelector(".items-price-total-discount").innerHTML = discount;
+ function updateTotal(discount) {
+    // document.querySelector(".items-price-total-discount").innerHTML = discount;
+    document.querySelector(".total-items-price").innerHTML = discount + " cом";
  }
 
 
- // calculate item price
-   
+// calculate ultimate discount
+// function ultimateDiscount() {
+//     const priceWithoutDiscount = +document.querySelector(".items-price-total-number").innerHTML;
+//     const totalWithDiscount = +document.querySelectorAll(".total-price")[3].innerHTML;
+//     return priceWithoutDiscount - totalWithDiscount
+// }   
 
+// function calculateDiscountTotal() {
+//     updateTotal(calculateDiscount1(counter) + calculateDiscount2(counter2) + calculateDiscount3(counter3)) 
+//     - upateTotalPrice(calculatePrice1(counter) + calculatePrice2(counter2) + calculatePrice3(counter3))
+// }
+
+// function updateDiscountTotal(ultimateDiscount) {
+//     document.querySelector(".items-price-total-discount").innerHTML =  ultimateDiscount;
+// }
 
 
 //  function showTotalItemNumber(selectedPrice1Counter,selectedPrice2Counter, selectedPrice3Counter) {

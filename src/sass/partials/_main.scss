@@ -78,6 +78,8 @@
     text-align: left;
     @media screen and (max-width:768px) {
         @include textBigBoldMobile();
+        margin-top: 15px;
+        margin-bottom: 15px;
     }
 }
 
@@ -398,7 +400,7 @@
 
         @media screen and (max-width:768px){
             @include detailedFlex(row, space-between, stretch,nowrap);
-            column-gap: 5px;
+            column-gap: 45px;
         }
 
     }
@@ -814,7 +816,7 @@
     @extend %textError;
     position: absolute;
     text-align: left;
-    top: 50px;
+    top: 28px;
     left: 0;
 }
 
@@ -920,7 +922,7 @@
     width: 100%;
 
     .total-heading,
-    .total-price {
+    .total-price, .total-price-heading {
         @extend %sectionTextBold;
         letter-spacing: -1px;
 
@@ -929,7 +931,10 @@
         }
     }
 }
-
+.total-price-heading  {
+    @include flex();
+    column-gap: 5px;
+}
 .delivery-total-heading,
 .payment-total-heading {
     color: var(--text-black, $color-black);
