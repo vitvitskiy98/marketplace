@@ -105,6 +105,15 @@
     font-weight: 700;
 }
 
+%textMobileCounter {
+    color: var(--Light-System-Text, $color-black);
+    text-align: center;
+    font-family: Segoe UI;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
 %textMiddle {
     font-family: Segoe UI;
     font-size: 16px;
