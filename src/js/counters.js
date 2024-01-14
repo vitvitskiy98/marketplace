@@ -195,8 +195,8 @@ function updatePrice1(selectedPrice1Counter) {
  }
  function updateDiscount3(selectedPrice3Counter) {
       const discount = calculateDiscount3(selectedPrice3Counter);
-      allOldPrices[2].innerHTML = discount + "  сом";;
-      allOldPricesMobile[2].innerHTML = discount + "  сом";;
+      allOldPrices[2].innerHTML = discount + "  сом";
+      allOldPricesMobile[2].innerHTML = discount + "  сом";
       updateTotal(discount + calculateDiscount1(counter) + calculateDiscount2(counter2))
  }
 
