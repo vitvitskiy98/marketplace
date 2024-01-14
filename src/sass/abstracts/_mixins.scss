@@ -51,7 +51,7 @@
 }
 
 
-@mixin header-container ($max-width: 1440px) {
+@mixin header-container ($width: 1440px) {
     padding:  16px 17px 16px 20px;
     margin: 0 auto;
     max-width: $max-width;
@@ -61,96 +61,29 @@
   margin: 0 auto;
   max-width: $max-width;
 }
+@mixin mobileContainer($max-width: 768px) {
+    padding: 0;
+    margin: 0 auto;
+    max-width: $max-width;
+}
+@mixin mobileContainerHeader($max-width: 768px) {
+    padding: 11px 13px 21px 13px;
+    margin: 0 auto;
+    max-width: $max-width;
+}
 @mixin containerHeader($max-width:1400px) {
     padding: 0 17px 0 24px;
     margin: 0 auto;
     max-width: $max-width;
   }
 
-@mixin inputText {
-    font-family: 'Aleo';
-    font-style: italic;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 29px;
-    color: #F2785C;
-}
 
-@mixin titleText {
-    font-family: 'Red Hat Text';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 40px;
-    line-height: 53px;
-    color: #F2785C;
-    text-align: center;
-}
-
-@mixin iconText {
-    font-family: 'Aleo';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    color: #0D606F;
-}
-
-@mixin boldText {
-    font-family: 'Aleo';
-    font-size: 20px;
-    font-style: italic;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0em;
-    text-align: left;
-}
-
-@mixin destinationDesc {
-    font-family: 'Red Hat Text';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 42px;
-    color: #FFFFFF;
-}
-
-@mixin travelSectionHeading {
-    font-family: 'Aleo';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 35px;
-    line-height: 42px;
-    color: #0D606F
-}
-
-@mixin findMoreButton {
-    position: relative;
-    width: 228px;
-    height: 59px;
-    background: #0D606F;
-    box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
-    border-radius: 10px;
-
-    font-family: 'Red Hat Text';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 32px;
-    color: #FFFFFF; 
-}
-
-@mixin buttonShadow {
-    cursor: pointer;
-    box-shadow: 0 4px 4px rgb(13 96 111 / 50%);
-    transition: 0.3s;
-}
-
-@mixin imgStyle {
-    background-repeat: no-repeat;
-    background-position: center 0;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+  @mixin textBigBoldMobile {
+     color: var(--text-black, $color-black);
+     font-family: Segoe UI;
+     font-size: 20px;
+     font-style: normal;
+     font-weight: 700;
+     line-height: 28px;
+     letter-spacing: -0.2px;
+  }
